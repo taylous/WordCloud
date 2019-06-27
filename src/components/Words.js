@@ -9,9 +9,9 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import TextField from '@material-ui/core/TextField';
-import { DialogContent } from '@material-ui/core';
 
 const styles = theme => ({
 
@@ -65,8 +65,8 @@ class Words extends React.Component {
         }).then(data => {
 
             let nextState = this.state.words;
-            nextState[data.name] = words;
-            this.setState({words : nextState});
+            nextState[data.name] = word;
+            this.setState({words: nextState});
         });
     }
     _delete(id) {
@@ -131,9 +131,7 @@ class Words extends React.Component {
 
         return (
             <div>
-                {Object.keys(this.state.words).map(
-                    
-                    id => {
+                {Object.keys(this.state.words).map(id => {
 
                         const word = this.state.words[id];
                         return (
@@ -168,7 +166,7 @@ class Words extends React.Component {
                 onClick={this.handleDialogToggle}>
                     <AddIcon />
                 </Fab>
-                <Dialog open={this.state.dialog} onClose = {this.handleDialogToggle}>
+                <Dialog open={this.state.dialog} onClose={this.handleDialogToggle}>
                     
                     <DialogTitle>단어 추가</DialogTitle>
                     
